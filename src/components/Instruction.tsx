@@ -4,13 +4,14 @@ import { useParams } from 'react-router-dom';
 export default function Instruction() {
   const { id } = useParams();
   let [instruction, setInstruction] = useState({
-    id: { id },
+    id: 0,
     title: '',
     time: 0,
   });
 
-  useEffect(() =>
-    setInstruction({ id: { id }, title: 'Some Instruction', time: 150 })
+  useEffect(
+    () => setInstruction({ id: 0, title: 'Some Instruction', time: 150 }),
+    [instruction]
   );
 
   return (

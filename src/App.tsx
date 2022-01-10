@@ -1,10 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
   HashRouter as Router,
   Routes,
   Route,
   Link,
-  useParams,
   useLocation,
 } from 'react-router-dom';
 import Home from './components/Home';

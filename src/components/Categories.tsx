@@ -1,16 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 interface CategoriesProps {
   title: string;
 }
 
-type CategoriesState = {};
-
-export default class Categories extends Component<
-  CategoriesProps,
-  CategoriesState
-> {
-  render() {
-    return <h2>Category: {this.props.title}</h2>;
-  }
+export default function Categories(props: CategoriesProps) {
+  return <h2>Category: {props.title}</h2>;
 }

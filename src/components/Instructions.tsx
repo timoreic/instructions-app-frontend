@@ -1,46 +1,31 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-type InstructionsProps = {};
+export default function Instructions() {
+  let [instructions, setInstructions] = useState([{ id: 0, title: '' }]);
 
-interface InstructionsState {
-  instructions: { id: number; title: string }[];
-}
-
-export default class Instructions extends Component<
-  InstructionsProps,
-  InstructionsState
-> {
-  constructor(props: InstructionsProps) {
-    super(props);
-    this.state = { instructions: [] };
-  }
-
-  componentDidMount() {
-    this.setState({
-      instructions: [
+  useEffect(
+    () =>
+      setInstructions([
         { id: 1, title: 'Chilli Sin Carne' },
         { id: 2, title: 'Broccolli Pasta' },
         { id: 3, title: 'French Lentil Soup' },
-      ],
-    });
-  }
+      ]),
+    [instructions]
+  );
 
-  render() {
-    return (
-      <Fragment>
-        <h2>Choose Instruction</h2>
-
-        <ul>
-          {this.state.instructions.map((instruction) => (
-            <li key={instruction.id}>
-              <Link to={`/instructions/${instruction.id}`}>
-                {instruction.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <h2>Choose Instruction</h2>
+      <ul>
+        {instructions.map((instruction) => (
+          <li key={instruction.id}>
+            <Link to={`/instructions/${instruction.id}`}>
+              {instruction.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </Fragment>
+  );
 }
