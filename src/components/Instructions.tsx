@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 type InstructionsProps = {};
 
@@ -20,9 +21,9 @@ export default class Instructions extends Component<
   componentDidMount() {
     this.setState({
       instructions: [
-        { id: 1, title: 'Bean Stir' },
-        { id: 2, title: 'Pasta Pesto' },
-        { id: 3, title: 'Lentil Soup' },
+        { id: 1, title: 'Chilli Sin Carne' },
+        { id: 2, title: 'Broccolli Pasta' },
+        { id: 3, title: 'French Lentil Soup' },
       ],
     });
   }
@@ -34,7 +35,11 @@ export default class Instructions extends Component<
 
         <ul>
           {this.state.instructions.map((instruction) => (
-            <li key={instruction.id}>{instruction.title}</li>
+            <li key={instruction.id}>
+              <Link to={`/instructions/${instruction.id}`}>
+                {instruction.title}
+              </Link>
+            </li>
           ))}
         </ul>
       </Fragment>

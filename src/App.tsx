@@ -1,8 +1,16 @@
 import React, { Fragment } from 'react';
-import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useParams,
+  useLocation,
+} from 'react-router-dom';
 import Home from './components/Home';
 import Instructions from './components/Instructions';
 import Admin from './components/Admin';
+import Categories from './components/Categories';
 
 export default function App() {
   return (
@@ -24,6 +32,9 @@ export default function App() {
                   <Link to="/instructions">Instructions</Link>
                 </li>
                 <li className="list-group-item">
+                  <Link to="/by-category">Categories</Link>
+                </li>
+                <li className="list-group-item">
                   <Link to="/admin">Manage Catalogue</Link>
                 </li>
               </ul>
@@ -33,12 +44,43 @@ export default function App() {
           <div className="col-md-10">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/instructions/:id" element={<Instruction />} />
               <Route path="/instructions" element={<Instructions />} />
+              <Route path="/by-category" element={<CategoryPage />} />
+              <Route path="/categories/mexican" element={<Categories />} />
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </div>
         </div>
       </div>
     </Router>
+  );
+}
+
+function Instruction() {
+  let { id } = useParams();
+
+  return <h2>Instruction ID: {id}</h2>;
+}
+
+function CategoryPage() {
+  let location = useLocation();
+
+  return (
+    <div>
+      <h2>Categories</h2>
+
+      <ul>
+        <li>
+          <Link to={`${location.pathname}/mexican`}>Mexican</Link>
+        </li>
+        <li>
+          <Link to={`${location.pathname}/italian`}>Italian</Link>
+        </li>
+        <li>
+          <Link to={`${location.pathname}/french`}>French</Link>
+        </li>
+      </ul>
+    </div>
   );
 }
