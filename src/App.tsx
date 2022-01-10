@@ -11,6 +11,7 @@ import Home from './components/Home';
 import Instructions from './components/Instructions';
 import Admin from './components/Admin';
 import Categories from './components/Categories';
+import Instruction from './components/Instruction';
 
 export default function App() {
   return (
@@ -47,7 +48,18 @@ export default function App() {
               <Route path="/instructions/:id" element={<Instruction />} />
               <Route path="/instructions" element={<Instructions />} />
               <Route path="/by-category" element={<CategoryPage />} />
-              <Route path="/categories/mexican" element={<Categories />} />
+              <Route
+                path="/by-category/mexican"
+                element={<Categories title="Mexican" />}
+              />
+              <Route
+                path="/by-category/italian"
+                element={<Categories title="Italian" />}
+              />
+              <Route
+                path="/by-category/french"
+                element={<Categories title="French" />}
+              />
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </div>
@@ -55,12 +67,6 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function Instruction() {
-  let { id } = useParams();
-
-  return <h2>Instruction ID: {id}</h2>;
 }
 
 function CategoryPage() {

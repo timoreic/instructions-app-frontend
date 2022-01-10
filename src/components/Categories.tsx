@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 
-export default class Categories extends Component {
+interface CategoriesProps {
+  title: string;
+}
+
+type CategoriesState = {};
+
+export default class Categories extends Component<
+  CategoriesProps,
+  CategoriesState
+> {
   render() {
-    return <h2>Category: </h2>;
+    return <h2>Category: {this.props.title}</h2>;
   }
 }

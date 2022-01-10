@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 
 type InstructionsProps = {};
 
-type instruction = { id: number; title: string };
-
 interface InstructionsState {
-  instructions: instruction[];
+  instructions: { id: number; title: string }[];
 }
 
 export default class Instructions extends Component<
