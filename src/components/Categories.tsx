@@ -1,15 +1,27 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+interface CategoriesProps {
+  onSelectCategory: (categoryName: string) => void;
+}
+
+type CategoryClickHandler = (
+  categoryName: string
+) => (e: React.MouseEvent) => void;
+
 type CategoriesType = {
   id: number;
   category_name: string;
 };
 
-export default function Categories() {
+export default function Categories(props: CategoriesProps) {
   let [categories, setCategories] = useState([{} as CategoriesType]);
   let [error, setError] = useState(0);
   let [isLoaded, setIsLoaded] = useState(false);
+
+  const categoryClickHandler: CategoryClickHandler = (categoryName) => (e) => {
+    props.onSelectCategory(categoryName);
+  };
 
   useEffect(() => {
     fetch('http://localhost:4000/v1/categories')
@@ -37,7 +49,12 @@ export default function Categories() {
         <ul>
           {categories.map((m) => (
             <li key={m.id}>
-              <Link to={`/category/${m.id}`}>{m.category_name}</Link>
+              <Link
+                to={`/category/${m.id}`}
+                onClick={categoryClickHandler(m.category_name)}
+              >
+                {m.category_name}
+              </Link>
             </li>
           ))}
         </ul>

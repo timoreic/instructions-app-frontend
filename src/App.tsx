@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import Instructions from './components/Instructions';
@@ -8,6 +8,12 @@ import Category from './components/Category';
 import Admin from './components/Admin';
 
 export default function App() {
+  let [categoryName, setCategoryName] = useState('');
+
+  const categorySelectHandler = (categoryName: string) => {
+    setCategoryName(categoryName);
+  };
+
   return (
     <Router>
       <div className="container">
@@ -41,8 +47,16 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/instructions" element={<Instructions />} />
               <Route path="/instructions/:id" element={<Instruction />} />
-              <Route path="/categories" element={<Categories />} />
-              <Route path="/category/:id" element={<Category />} />
+              <Route
+                path="/categories"
+                element={
+                  <Categories onSelectCategory={categorySelectHandler} />
+                }
+              />
+              <Route
+                path="/category/:id"
+                element={<Category categoryName={categoryName} />}
+              />
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </div>

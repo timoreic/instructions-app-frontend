@@ -1,12 +1,16 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
+interface CategoryProps {
+  categoryName: string;
+}
+
 type InstructionsType = {
   id: number;
   title: string;
 };
 
-export default function Category() {
+export default function Category(props: CategoryProps) {
   const { id } = useParams();
   let [instructions, setInstructions] = useState([{} as InstructionsType]);
   let [error, setError] = useState(0);
@@ -38,7 +42,7 @@ export default function Category() {
   } else {
     return (
       <Fragment>
-        <h2>Category: </h2>
+        <h2>Category: {props.categoryName}</h2>
         <div className="list-group">
           {instructions.map((instruction) => (
             <Link
