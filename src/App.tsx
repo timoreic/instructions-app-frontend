@@ -39,10 +39,10 @@ export default function App() {
           <div className="col-md-10">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/instructions/:id" element={<Instruction />} />
               <Route path="/instructions" element={<Instructions />} />
+              <Route path="/instructions/:id" element={<Instruction />} />
               <Route path="/categories" element={<Categories />} />
-              <Route path="/categories/:category" element={<Category />} />
+              <Route path="/category/:id" element={<Category />} />
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </div>
