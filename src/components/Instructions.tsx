@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-type InstructionType = {
+type InstructionsType = {
   id: number;
   title: string;
 };
 
 export default function Instructions() {
-  let [instructions, setInstructions] = useState([{} as InstructionType]);
+  let [instructions, setInstructions] = useState([{} as InstructionsType]);
   let [error, setError] = useState(0);
   let [isLoaded, setIsLoaded] = useState(false);
 
