@@ -78,7 +78,13 @@ export default function Instruction() {
               <td>
                 <strong>Steps:</strong>
               </td>
-              <td>{instruction.steps}</td>
+              <td>
+                <ol>
+                  {instruction.steps.map((step, i) => (
+                    <li key={i}>{step}</li>
+                  ))}
+                </ol>
+              </td>
             </tr>
           </tbody>
         </table>

@@ -46,18 +46,18 @@ export default function Categories(props: CategoriesProps) {
     return (
       <Fragment>
         <h2>Categories</h2>
-        <ul>
-          {categories.map((m) => (
-            <li key={m.id}>
-              <Link
-                to={`/category/${m.id}`}
-                onClick={categoryClickHandler(m.category_name)}
-              >
-                {m.category_name}
-              </Link>
-            </li>
+        <div className="list-group">
+          {categories.map((category) => (
+            <Link
+              className="list-group-item list-group-item-action"
+              to={`/category/${category.id}`}
+              onClick={categoryClickHandler(category.category_name)}
+              key={category.id}
+            >
+              {category.category_name}
+            </Link>
           ))}
-        </ul>
+        </div>
       </Fragment>
     );
   }

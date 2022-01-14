@@ -34,15 +34,17 @@ export default function Instructions() {
     return (
       <Fragment>
         <h2>Choose Instruction</h2>
-        <ul>
+        <div className="list-group">
           {instructions.map((instruction) => (
-            <li key={instruction.id}>
-              <Link to={`/instructions/${instruction.id}`}>
-                {instruction.title}
-              </Link>
-            </li>
+            <Link
+              className="list-group-item list-group-item-action"
+              to={`/instructions/${instruction.id}`}
+              key={instruction.id}
+            >
+              {instruction.title}
+            </Link>
           ))}
-        </ul>
+        </div>
       </Fragment>
     );
   }
